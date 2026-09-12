@@ -1,20 +1,10 @@
 <!doctype html>
-<html lang="cs">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Marcellus&family=Nunito+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
-    <title>Blog - Ciciban dětská obuv</title>
-    <meta
-      name="description"
-      content="Rady a tipy o dětské obuvi, zdravém vývoji nohou a výběru bot pro děti od značky Ciciban."
-    />
+    <link rel="stylesheet" href="../styles/style.css" />
+    <title>Tradice a kvalita - Ciciban</title>
   </head>
   <body>
     <header class="site-header">
@@ -53,9 +43,9 @@
           </div>
 
           <div class="logo-space">
-            <a href="index.html" class="logo-link">
+            <a href="../index.html" class="logo-link">
               <img
-                src="cropped-Ciciban_RGB.png"
+                src="../obr/cropped-Ciciban_RGB.png"
                 alt="Logo značky Ciciban"
                 class="ciciban-logo"
               />
@@ -101,15 +91,19 @@
               <li>
                 <a href="vitejteucicibanu.html">Vítejte u Cicibanu</a>
               </li>
-              <li>
-                <a href="tradiceakvalita.html">Tradice a kvalita</a>
+              <li class="current-menu-item">
+                <a href="tradiceakvalita.html" aria-current="page"
+                  >Tradice a kvalita</a
+                >
               </li>
               <li>
                 <a href="proc_ciciban.html">Proč zvolit obuv Ciciban</a>
               </li>
               <li><a href="kontakt.html">Kontakty</a></li>
               <li>
-                <a href="prodejny.html">Partnerské prodejny</a>
+                <a href="prodejny.html"
+                  >Partnerské prodejny</a
+                >
               </li>
             </ul>
           </nav>
@@ -149,15 +143,62 @@
         </div>
       </div>
     </header>
-
     <main>
-      <section class="blog_section">
-        <h2 class="section_title">Blog</h2>
-        <p class="blog_intro">
-          Rady a tipy o dětské obuvi, měření nohou a zdravém vývoji chodidla.
-        </p>
-        <div class="blog_grid" id="blog-all"></div>
-      </section>
+      <header class="page-header">
+        <div class="container">
+          <h1 class="page-title">Tradice a kvalita</h1>
+        </div>
+      </header>
+
+      <div class="container">
+        <article class="page-article">
+          <h2 class="ciciban_header materials-title">Vyrobeno ve Slovinsku</h2>
+          <p>
+            Obuv Ciciban je vysoce kvalitní výrobek, který je výsledkem znalostí
+            mnoha generací v kombinaci s využitím moderních technologií.
+            Převážná část obuvi Ciciban je vyrobena ve Slovinsku, v městě Miren,
+            který je známý svou stoletou obuvnickou tradicí. Obuv Ciciban je
+            slovinský výrobek, který v sobě spojuje kvalitu, znalosti a tradici
+            typického místního řemesla.
+          </p>
+          <p>
+            Výrobky naší vlastní výroby se vyznačují nejkvalitnějšími výrobními
+            metodami, které jsou výsledkem znalostí mnoha generací v kombinaci s
+            využitím nejnovější technologie, která je dnes k dispozici.
+            Společnost sleduje nejnovější technologické inovace, které zaručují
+            přesnou a vynikající kvalitu výroby obuvi. Společnost přitom zůstává
+            věrná myšlence, že pro konečnou kvalitu obuvi jsou stále nezbytné
+            šikovné ruce ševců. Kromě kvality výrobků se naše společnost
+            vyznačuje také produktivitou, protože
+            <strong>vyrábí více než 2500 bot denně</strong>, které jsou během
+            výrobního procesu kontrolovány
+            <strong
+              >více než 70ti páry rukou odborně vyškoleného personálu</strong
+            >.
+          </p>
+
+          <div class="materials-gallery">
+            <img src="../obr/ciciban-proizvodnja2-2.jpeg" alt="Výroba obuvi Ciciban" />
+            <img
+              src="../obr/Proizvodnja-113-1024x767.jpg"
+              alt="Výroba obuvi Ciciban"
+            />
+          </div>
+
+          <h2 class="ciciban_header materials-title">Tradice a kvalita</h2>
+          <p>
+            Téměř stoletá obuvnická tradice rodiny Petejanů sahá až do roku
+            1922, kdy se Ivan Petejan začal věnovat obuvnickému řemeslu. Na
+            rodinnou tradici výroby obuvi pro dospělé a později výhradně dětské
+            obuvi navázal jeho syn Pavel, který v roce 1953 vytvořil základ pro
+            rodinný obchod. V průběhu let se potřeby a požadavky na dětskou obuv
+            zvyšovaly, takže se rodina Petejanů rozhodla zvýšit své výrobní
+            schopnosti a kapacity. Za tímto účelem rodina v roce 1995 koupila
+            areál společnosti Ciciban Miren a zajistila a znovu spustila značku
+            dětské obuvi Ciciban.
+          </p>
+        </article>
+      </div>
     </main>
 
     <script>
@@ -169,12 +210,6 @@
         toggleBtn.classList.toggle("active", isOpen);
         toggleBtn.setAttribute("aria-expanded", String(isOpen));
       });
-    </script>
-
-    <script src="blog/clanky.js"></script>
-    <script src="blog/blog-render.js"></script>
-    <script>
-      renderClanky("blog-all");
     </script>
   </body>
 </html>
