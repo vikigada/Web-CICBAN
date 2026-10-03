@@ -12,371 +12,6 @@
     />
     <link rel="stylesheet" href="../styles/style.css" />
     <title>Partnerské prodejny - Ciciban dětská obuv</title>
-    <style>
-      /* Specifické styly pro stránku Prodejny */
-      .stores-hero {
-        text-align: center;
-        padding: 40px 20px 20px;
-      }
-      .stores-hero h1 {
-        font-family: "Marcellus", serif;
-        font-size: 2.3rem;
-        color: #333;
-        margin-bottom: 10px;
-      }
-      .stores-hero p {
-        font-size: 1.1rem;
-        color: #666;
-        max-width: 650px;
-        margin: 0 auto;
-      }
-
-      .stores-layout {
-        display: grid;
-        grid-template-columns: 1.15fr 1fr;
-        gap: 30px;
-        max-width: 1200px;
-        margin: 0 auto 50px;
-        padding: 0 20px;
-        align-items: start;
-      }
-
-      /* Map Card Container */
-      .map-card {
-        background: #ffffff;
-        border-radius: 16px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
-        padding: 24px;
-        border: 1px solid #f0f0f0;
-        position: sticky;
-        top: 20px;
-        min-width: 0;
-      }
-
-      .map-controls {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        margin-bottom: 16px;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .map-hint {
-        font-size: 0.9rem;
-        color: #777;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-      }
-      .map-hint svg {
-        width: 16px;
-        height: 16px;
-        fill: #e85a71;
-      }
-
-      .mobile-region-select-wrap {
-        display: none;
-        width: 100%;
-        margin-top: 10px;
-      }
-      .region-select {
-        width: 100%;
-        padding: 12px 16px;
-        border-radius: 10px;
-        border: 1px solid #dcdfe4;
-        background: #f8fafc;
-        font-size: 1rem;
-        font-family: inherit;
-        color: #333;
-        outline: none;
-        cursor: pointer;
-        transition: border-color 0.2s;
-      }
-      .region-select:focus {
-        border-color: #e85a71;
-        background: #fff;
-      }
-
-      .svg-map-wrapper {
-        position: relative;
-        width: 100%;
-        height: auto;
-        border-radius: 12px;
-        background: #f8fafc;
-        padding: 12px;
-        overflow: hidden;
-      }
-
-      .svg-map-wrapper svg {
-        width: 100%;
-        height: auto;
-        display: block;
-        filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.05));
-      }
-
-      /* SVG Paths Styling */
-      .region-path {
-        fill: #dbe4ee;
-        stroke: #ffffff;
-        stroke-width: 6px;
-        stroke-linejoin: round;
-        stroke-linecap: round;
-        cursor: pointer;
-        transition:
-          fill 0.25s cubic-bezier(0.4, 0, 0.2, 1),
-          transform 0.2s ease,
-          filter 0.2s ease;
-        outline: none;
-      }
-
-      .region-path:hover {
-        fill: #fca5a5;
-        filter: brightness(0.97);
-      }
-
-      .region-path.active {
-        fill: #e85a71;
-        stroke: #ffffff;
-        stroke-width: 8px;
-        filter: drop-shadow(0 2px 8px rgba(232, 90, 113, 0.4));
-      }
-
-      .region-path:focus-visible {
-        stroke: #333;
-        stroke-width: 8px;
-      }
-
-      /* Tooltip */
-      #map-tooltip {
-        position: fixed;
-        display: none;
-        background: rgba(30, 41, 59, 0.95);
-        color: #ffffff;
-        padding: 8px 14px;
-        border-radius: 8px;
-        font-size: 13px;
-        font-weight: 600;
-        pointer-events: none;
-        z-index: 1000;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        transform: translate(-50%, -120%);
-        white-space: nowrap;
-        backdrop-filter: blur(4px);
-      }
-
-      /* Stores Panel */
-      .stores-panel {
-        background: #ffffff;
-        border-radius: 16px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
-        padding: 24px;
-        border: 1px solid #f0f0f0;
-        min-height: 500px;
-        min-width: 0;
-        display: flex;
-        flex-direction: column;
-      }
-
-      .panel-header {
-        border-bottom: 2px solid #f4f4f5;
-        padding-bottom: 16px;
-        margin-bottom: 16px;
-      }
-
-      .panel-title-wrap {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 10px;
-      }
-
-      .panel-title-wrap h2 {
-        font-family: "Marcellus", serif;
-        font-size: 1.6rem;
-        color: #222;
-        margin: 0;
-      }
-
-      .stores-count-badge {
-        background: #fee2e2;
-        color: #e85a71;
-        font-weight: 700;
-        font-size: 0.85rem;
-        padding: 4px 10px;
-        border-radius: 20px;
-      }
-
-      /* Search Box */
-      .search-box-wrap {
-        position: relative;
-        margin-top: 14px;
-      }
-      .search-box {
-        width: 100%;
-        padding: 11px 14px 11px 40px;
-        border-radius: 10px;
-        border: 1px solid #e2e8f0;
-        background: #f8fafc;
-        font-size: 0.95rem;
-        font-family: inherit;
-        outline: none;
-        transition: all 0.2s;
-        box-sizing: border-box;
-      }
-      .search-box:focus {
-        border-color: #e85a71;
-        background: #ffffff;
-        box-shadow: 0 0 0 3px rgba(232, 90, 113, 0.12);
-      }
-      .search-icon {
-        position: absolute;
-        left: 14px;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 18px;
-        height: 18px;
-        fill: #94a3b8;
-        pointer-events: none;
-      }
-
-      /* Store Cards List */
-      .stores-list {
-        display: flex;
-        flex-direction: column;
-        gap: 14px;
-        margin-top: 10px;
-        max-height: 580px;
-        overflow-y: auto;
-        padding-right: 6px;
-      }
-      .stores-list::-webkit-scrollbar {
-        width: 6px;
-      }
-      .stores-list::-webkit-scrollbar-track {
-        background: #f1f5f9;
-        border-radius: 4px;
-      }
-      .stores-list::-webkit-scrollbar-thumb {
-        background: #cbd5e1;
-        border-radius: 4px;
-      }
-
-      .store-card {
-        background: #fafbfc;
-        border: 1px solid #eef2f6;
-        border-radius: 12px;
-        padding: 16px 18px;
-        transition: all 0.2s ease;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-      }
-      .store-card:hover {
-        background: #ffffff;
-        border-color: #fca5a5;
-        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
-        transform: translateY(-2px);
-      }
-
-      .store-name {
-        font-family: "Marcellus", serif;
-        font-size: 1.2rem;
-        font-weight: 600;
-        color: #1e293b;
-        margin: 0;
-      }
-
-      .store-address {
-        font-size: 0.95rem;
-        color: #475569;
-        line-height: 1.45;
-        display: flex;
-        align-items: flex-start;
-        gap: 8px;
-      }
-      .store-address svg {
-        width: 16px;
-        height: 16px;
-        fill: #e85a71;
-        flex-shrink: 0;
-        margin-top: 2px;
-      }
-
-      .store-actions {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-top: 4px;
-        padding-top: 10px;
-        border-top: 1px dashed #e2e8f0;
-      }
-
-      .btn-map-link {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        background: #f1f5f9;
-        color: #334155;
-        text-decoration: none;
-        font-size: 0.88rem;
-        font-weight: 600;
-        padding: 7px 14px;
-        border-radius: 8px;
-        transition: all 0.2s;
-      }
-      .btn-map-link:hover {
-        background: #e85a71;
-        color: #ffffff;
-      }
-      .btn-map-link svg {
-        width: 14px;
-        height: 14px;
-        fill: currentColor;
-      }
-
-      .empty-state {
-        text-align: center;
-        padding: 40px 20px;
-        color: #64748b;
-      }
-      .empty-state svg {
-        width: 48px;
-        height: 48px;
-        fill: #cbd5e1;
-        margin-bottom: 12px;
-      }
-
-      /* Quick filter all button */
-      .btn-show-all {
-        background: transparent;
-        border: 1px solid #e2e8f0;
-        color: #64748b;
-        padding: 6px 12px;
-        border-radius: 8px;
-        font-size: 0.85rem;
-        cursor: pointer;
-        font-family: inherit;
-        transition: all 0.2s;
-      }
-      .btn-show-all:hover {
-        border-color: #e85a71;
-        color: #e85a71;
-      }
-
-      /* Responsive */
-      @media (max-width: 960px) {
-        .stores-layout {
-          grid-template-columns: 1fr;
-        }
-        .map-card {
-          position: static;
-        }
-        .mobile-region-select-wrap {
-          display: block;
-        }
-      }
-    </style>
   </head>
   <body>
     <header class="site-header">
@@ -800,73 +435,86 @@
               street: "Oplanská 2614 – centrum Blatov",
               zip: "190 16",
               city: "Praha 9",
-              mapUrl: "https://mapy.cz/s/1oBXP",
+              mapUrl:
+                "https://mapy.com/cs/turisticka?q=DUELLE&source=firm&id=13027020&ds=2&x=14.6483588&y=50.0781121&z=17",
             },
             {
               name: "Protetika HOLEŠOVICE",
               street: "Tusarova 1520/24",
               zip: "170 00",
               city: "Praha 7",
-              mapUrl: "https://mapy.cz/s/1oBZA",
+              mapUrl:
+                "https://mapy.com/cs/zakladni?q=Protetika%20HOLE%C5%A0OVICE&source=firm&id=14017790&ds=2&x=14.4479227&y=50.1013438&z=17",
             },
             {
               name: "Dětská obuv BotaBota",
               street: "Čs. Armády 21",
               zip: "160 00",
               city: "Praha 6 – Dejvice",
-              mapUrl: "https://mapy.cz/s/1oBZ8",
+              mapUrl:
+                "https://mapy.com/cs/turisticka?q=D%C4%9Btsk%C3%A1%20obuv%20BotaBota&source=firm&id=13214340&ds=2&x=14.4017194&y=50.1003222&z=17",
             },
             {
               name: "Kotě v botě",
               street: "Bělohorská 256/47",
               zip: "169 00",
               city: "Praha 6",
-              mapUrl: "https://mapy.cz/s/1oBZb",
+              mapUrl:
+                "https://mapy.com/cs/turisticka?q=Kot%C4%9B%20v%20bot%C4%9B&source=firm&id=13197821&ds=2&x=14.3733142&y=50.0839908&z=17",
             },
             {
               name: "Obuv BLATNIČKA",
               street: "Seydlerova 2451",
               zip: "158 00",
               city: "Praha 5",
-              mapUrl: "https://mapy.cz/s/1oC05",
+              mapUrl:
+                "https://mapy.com/cs/turisticka?q=Obuv%20BLATNI%C4%8CKA&source=firm&id=13647734&ds=2&x=14.3472044&y=50.0506867&z=17",
             },
             {
               name: "Dětská obuv LULU",
               street: "Jirečkova 16",
               zip: "170 00",
               city: "Praha 7",
-              mapUrl: "https://mapy.cz/s/1oC0a",
+              mapUrl:
+                "https://mapy.com/cs/turisticka?q=D%C4%9Btsk%C3%A1%20obuv%20LULU&source=firm&id=13128569&ds=2&x=14.4226563&y=50.0993618&z=17",
             },
             {
               name: "Dětská obuv BotaBota (OD LÁDVÍ)",
               street: "Střelničná 1660",
               zip: "182 00",
               city: "Praha 8 – Kobylisy",
-              mapUrl: "https://mapy.cz/s/1oC0g",
+              mapUrl:
+                "https://mapy.com/cs/turisticka?q=D%C4%9Btsk%C3%A1%20obuv%20BotaBota&source=firm&id=13186652&ds=2&x=14.4688722&y=50.1271361&z=17",
             },
             {
               name: "Bimo Retail s.r.o.",
               street: "Veronské nám. 598",
               zip: "109 00",
               city: "Praha 15 – Horní Měcholupy",
-              mapUrl: "https://mapy.cz/s/1oC0q",
+              mapUrl:
+                "https://mapy.com/cs/zakladni?q=Bimo%20Retail%20s.r.o.&source=firm&id=2692662&ds=2&x=14.5607825&y=50.0418365&z=17",
             },
+
             {
               name: "Dětská zdravá obuv u Marušky",
               street: "ulice Přátelství 51/706",
               zip: "104 00",
               city: "Praha 10 – Uhříněves",
-              mapUrl: "https://mapy.cz/s/1oC0s",
+              mapUrl:
+                "https://mapy.com/cs/letecka?q=P%C5%99%C3%A1telstv%C3%AD%20216%2F34%2C%20104%2000%20Praha%2022-Uh%C5%99%C3%ADn%C4%9Bves&source=addr&id=9013852&ds=2&x=14.5952404&y=50.0339097&z=17",
             },
+
             {
               name: "Kvalitní botičky",
               street: "Svornosti 808/35",
               zip: "150 00",
               city: "Praha 5 – Smíchov",
-              mapUrl: "https://mapy.cz/s/bujelavoku",
+              mapUrl:
+                "https://mapy.com/cs/zakladni?q=Svornosti%20808%2F35%2C%20150%2000%20Praha%205-Sm%C3%ADchov&source=addr&id=8968578&ds=2&x=14.4082904&y=50.0721698&z=17",
             },
           ],
         },
+
         "CZ-ST": {
           name: "Středočeský kraj",
           stores: [
@@ -875,35 +523,40 @@
               street: "Jičínská 1132",
               zip: "293 01",
               city: "Mladá Boleslav",
-              mapUrl: "https://mapy.cz/s/1oBYc",
+              mapUrl:
+                "https://mapy.com/cs/turisticka?q=R%C3%A1j%20d%C4%9Btsk%C3%A9ho%20obouv%C3%A1n%C3%AD%20a%20od%C3%ADv%C3%A1n%C3%AD&source=firm&id=2693104&ds=2&x=14.8913579&y=50.4045747&z=17",
             },
             {
               name: "DPK – botičky",
               street: "Barákova 237/8",
               zip: "251 01",
               city: "Říčany",
-              mapUrl: "https://mapy.cz/s/1oBYE",
+              mapUrl:
+                "https://mapy.com/cs/turisticka?q=DPK%20%E2%80%93%20boti%C4%8Dky&source=firm&id=13608839&ds=2&x=14.4063315&y=50.0365662&z=13.948",
             },
             {
               name: "Bubu Botičky",
               street: "Plzeňská 1731",
               zip: "266 01",
               city: "Beroun",
-              mapUrl: "https://mapy.cz/s/1oBYJ",
+              mapUrl:
+                "https://mapy.com/cs/letecka?q=Bubu%20Boti%C4%8Dky&source=firm&id=2323813&ds=2&x=14.0158975&y=49.9035872&z=10.748&ovl=5",
             },
             {
               name: "Dítě v botě",
               street: "Vestecká 12",
               zip: "252 50",
               city: "Vestec",
-              mapUrl: "https://mapy.cz/s/1oBYT",
+              mapUrl:
+                "https://mapy.com/cs/letecka?q=D%C3%ADt%C4%9B%20v%20bot%C4%9B&source=firm&id=13608236&ds=2&x=14.5079853&y=49.9806325&z=17&ovl=5",
             },
             {
               name: "Styl junior",
               street: "Mokropeská 2026",
               zip: "252 28",
               city: "Černošice",
-              mapUrl: "https://mapy.cz/s/1oC0w",
+              mapUrl:
+                "https://mapy.com/cs/turisticka?q=Mokropesk%C3%A1%202026%2F2027%2C%20252%2028%20%C4%8Cerno%C5%A1ice&source=addr&id=11707378&ds=2&x=14.3148759&y=49.9495355&z=17",
             },
           ],
         },
@@ -915,14 +568,16 @@
               street: "Masarykova 12",
               zip: "412 01",
               city: "Litoměřice",
-              mapUrl: "https://mapy.cz/s/1oC2P",
+              mapUrl:
+                "https://mapy.com/cs/turisticka?q=B%C5%99ezinova%20cesta%20533%2C&source=addr&id=11329004&ds=2&x=14.1982195&y=50.5858971&z=10.748",
             },
             {
               name: "Dětský krámek DĚČÍN",
               street: "ul. Bezručova 569/12",
               zip: "405 02",
               city: "Děčín 4",
-              mapUrl: "https://mapy.cz/s/1oC2Y",
+              mapUrl:
+                "https://mapy.com/cs/turisticka?q=ul.%20Bezru%C4%8Dova%20569%2F12&source=addr&id=9161913&ds=2&x=14.1973820&y=50.7732071&z=17",
             },
           ],
         },
@@ -934,21 +589,24 @@
               street: "Na Poříčí 554/3",
               zip: "460 01",
               city: "Liberec 2",
-              mapUrl: "https://mapy.cz/s/1oC25",
+              mapUrl:
+                "https://mapy.com/cs/zakladni?q=Na%20Po%C5%99%C3%AD%C4%8D%C3%AD%20554%2F3&source=addr&id=13829048&ds=2&x=15.0551615&y=50.7681713&z=17",
             },
             {
               name: "Žirafa – zdravá dětská obuv a doplňky",
               street: "Palackého 195",
               zip: "511 01",
               city: "Turnov",
-              mapUrl: "https://mapy.cz/s/1oC2p",
+              mapUrl:
+                "https://mapy.com/cs/zakladni?q=Palack%C3%A9ho%20195&source=addr&id=11003640&ds=2&x=15.1527214&y=50.5869390&z=17",
             },
             {
               name: "Dětská Obuv OD Banco",
               street: "Dr. E. Beneše 2662",
               zip: "470 01",
               city: "Česká Lípa",
-              mapUrl: "https://mapy.cz/s/1oC2u",
+              mapUrl:
+                "https://mapy.com/cs/zakladni?q=Dr.%20E.%20Bene%C5%A1e%202662&source=addr&id=11442142&ds=2&x=14.5359957&y=50.6837577&z=17",
             },
           ],
         },
@@ -960,28 +618,31 @@
               street: "Havlíčkova 51",
               zip: "508 01",
               city: "Hořice",
-              mapUrl: "https://mapy.cz/s/1oBWp",
+              mapUrl:
+                "https://mapy.com/cs/zakladni?q=Havl%C3%AD%C4%8Dkova%2051&source=addr&id=10991211&ds=2&x=13.2862151&y=49.4819030&z=17",
             },
             {
               name: "Dupy dup dětská obuv",
               street: "M. Horákové 549/53",
               zip: "500 06",
               city: "Hradec Králové 6 – Třebeš",
-              mapUrl: "https://mapy.cz/s/1oBWO",
+              mapUrl:
+                "https://mapy.com/cs/zakladni?q=%20%20%20%20%20%20%20%20%20%20%20%20%20%20street%3A%20%22M.%20Hor%C3%A1kov%C3%A9%20549%2F53%22%2C&source=addr&id=9056851&ds=2&x=15.8475664&y=50.1854812&z=17",
             },
             {
               name: "Hravá botka",
               street: "Hořická 50",
               zip: "500 02",
               city: "Hradec Králové",
-              mapUrl: "https://mapy.cz/s/1oBWZ",
+              mapUrl:
+                "https://mapy.com/cs/zakladni?q=Ho%C5%99ick%C3%A1%2050%2F20%2050002%2C%202%20Hradec%20Kr%C3%A1lov%C3%A9%202&source=addr&id=9053828&ds=2&x=15.8163214&y=50.2157273&z=17",
             },
             {
               name: "Obuv Rotterovka",
               street: "Horská 190",
               zip: "543 02",
               city: "Hořejší Vrchlabí",
-              mapUrl: "https://mapy.cz/s/1oBXb",
+              mapUrl: "Obuv Rotterovka, Horská 190, 543 02 Hořejší Vrchlabí",
             },
           ],
         },
@@ -997,7 +658,8 @@
               street: "Školní 204/20",
               zip: "796 01",
               city: "Prostějov",
-              mapUrl: "https://mapy.cz/s/1oC1M",
+              mapUrl:
+                "https://mapy.com/cs/zakladni?q=%C5%A0koln%C3%AD%204379%2F20%2C%20796%2001%20Prost%C4%9Bjov%201&source=addr&id=11347676&ds=2&x=17.1116138&y=49.4731753&z=17",
             },
             {
               name: "Dětská obuv CVRČEK (OD Senimo)",
@@ -1016,7 +678,8 @@
               street: "Máchova 69",
               zip: "563 01",
               city: "Lanškroun",
-              mapUrl: "https://mapy.cz/s/1oC1x",
+              mapUrl:
+                "https://mapy.com/cs/turisticka?q=M%C3%A1chova%2069%2C%20563%2001%20Lan%C5%A1kroun-Vnit%C5%99n%C3%AD%20M%C4%9Bsto&source=addr&id=10745239&ds=2&x=16.6113818&y=49.9111742&z=17",
             },
           ],
         },
@@ -1030,19 +693,14 @@
               city: "Přeštice",
               mapUrl: "https://mapy.cz/s/1oC1B",
             },
+
             {
               name: "Dětská obuv U Stonožky",
               street: "Smetanovy sady 6",
               zip: "301 00",
               city: "Plzeň",
-              mapUrl: "https://mapy.cz/s/1oC1H",
-            },
-            {
-              name: "Dětská obuv U Stonožky",
-              street: "Gerská 15",
-              zip: "323 00",
-              city: "Plzeň",
-              mapUrl: "https://mapy.cz/s/1oC1J",
+              mapUrl:
+                "https://mapy.com/cs/zakladni?q=3%20Plze%C5%88-Plze%C5%88%203%20CZ%2C%20Smetanovy%20sady%20332%2F6%2C%20301%2000%20Plze%C5%88&source=addr&id=9072345&ds=2&x=13.3746207&y=49.7453480&z=17",
             },
           ],
         },
@@ -1054,21 +712,24 @@
               street: "Masarykova 186",
               zip: "763 26",
               city: "Luhačovice",
-              mapUrl: "https://mapy.cz/s/1oC3M",
+              mapUrl:
+                "https://mapy.com/cs/zakladni?q=P%2BK%20OBUV&source=firm&id=13262198&ds=2&x=17.7581120&y=49.1002186&z=17",
             },
             {
               name: "U Rominka",
               street: "Růžová 1238",
               zip: "686 01",
               city: "Uherské Hradiště",
-              mapUrl: "https://mapy.cz/s/1oC3T",
+              mapUrl:
+                "https://mapy.com/cs/zakladni?q=U%20Rominka&source=firm&id=12778545&ds=2&x=17.4620078&y=49.0679956&z=17",
             },
             {
               name: "Dětská obuv (Hrací centrum Smajlíkov)",
               street: "ul. 28. října 1521",
               zip: "686 01",
               city: "Uherské Hradiště",
-              mapUrl: "https://mapy.cz/s/1oC3X",
+              mapUrl:
+                "https://mapy.com/cs/zakladni?q=28.%20%C5%99%C3%ADjna%201521%2C%20686%2001%20Uhersk%C3%A9%20Hradi%C5%A1t%C4%9B%201&source=addr&id=12785379&ds=2&x=17.4681652&y=49.0622854&z=17",
             },
           ],
         },
@@ -1080,35 +741,40 @@
               street: "U Leskavy 27",
               zip: "625 00",
               city: "Brno",
-              mapUrl: "https://mapy.cz/s/1oC3h",
+              mapUrl:
+                "https://mapy.com/cs/zakladni?q=Emelli%20shop%2C%20s.r.o&source=firm&id=12885151&ds=2&x=16.5699576&y=49.1640246&z=17",
             },
             {
               name: "Botičkárna",
               street: "Čápkova 7",
               zip: "602 00",
               city: "Brno",
-              mapUrl: "https://mapy.cz/s/1oC3j",
+              mapUrl:
+                "https://mapy.com/cs/zakladni?q=Boti%C4%8Dk%C3%A1rna&source=firm&id=13430075&ds=2&x=16.5945053&y=49.1999795&z=17",
             },
             {
               name: "Dětská obuv Storyshoes",
               street: "Palackého třída 64",
               zip: "612 00",
               city: "Brno",
-              mapUrl: "https://mapy.cz/s/1oC3n",
+              mapUrl:
+                "https://mapy.com/cs/zakladni?q=D%C4%9Btsk%C3%A1%20obuv%20Storyshoes&source=firm&id=13134913&ds=2&x=16.5960554&y=49.2222268&z=17",
             },
             {
               name: "Boty dětem",
               street: "Pod Svatým Janem 420/4",
               zip: "669 04",
               city: "Znojmo – Přímětice",
-              mapUrl: "https://mapy.cz/s/1oC3q",
+              mapUrl:
+                "https://mapy.com/cs/letecka?q=botydetem&source=firm&id=12727449&ds=2&x=16.0393953&y=48.8777454&z=17",
             },
             {
               name: "Yupiee – Botičky a ještě víc",
               street: "Bezručova 1570/1",
               zip: "678 01",
               city: "Blansko",
-              mapUrl: "https://mapy.cz/s/1oC3u",
+              mapUrl:
+                "https://mapy.com/cs/letecka?q=Yupiee%20%E2%80%93%20Boti%C4%8Dky%20a%20je%C5%A1t%C4%9B%20v%C3%ADc&source=firm&id=13345667&ds=2&x=16.6437829&y=49.3649048&z=17",
             },
           ],
         },
@@ -1120,7 +786,8 @@
               street: "U Soudu 6200/5",
               zip: "708 00",
               city: "Ostrava – Poruba",
-              mapUrl: "https://mapy.cz/s/1oC42",
+              mapUrl:
+                "https://mapy.com/cs/letecka?q=JUST%20GO%2C%20d%C4%9Btsk%C3%A1%20obuv&source=firm&id=12983941&ds=2&x=18.1856024&y=49.8262558&z=17",
               web: "https://www.botickydetske.cz",
             },
           ],
@@ -1133,14 +800,16 @@
               street: "Nám. Svobody 9",
               zip: "586 01",
               city: "Jihlava",
-              mapUrl: "https://mapy.cz/s/1oC48",
+              mapUrl:
+                "https://mapy.com/cs/letecka?q=Obuv%20K%2BA&source=firm&id=13287918&ds=2&x=15.5891061&y=49.3999253&z=17",
             },
             {
               name: "SUPERBOTA – Zdravá dětská obuv",
               street: "U Rendlíku 1903",
               zip: "393 01",
               city: "Pelhřimov",
-              mapUrl: "https://mapy.cz/s/1oC4f",
+              mapUrl:
+                "https://mapy.com/cs/letecka?q=Strachovsk%C3%A1%201903%2C%20393%2001%20Pelh%C5%99imov&source=addr&id=11191019&ds=2&x=15.2176523&y=49.4319835&z=17",
             },
           ],
         },
@@ -1152,14 +821,16 @@
               street: "Velké náměstí 15",
               zip: "383 01",
               city: "Prachatice",
-              mapUrl: "https://mapy.cz/s/1oC4r",
+              mapUrl:
+                "https://mapy.com/cs/letecka?q=Bejbyshop%20Prachatice&source=firm&id=13435341&ds=2&x=13.9986848&y=49.0133100&z=17",
             },
             {
               name: "SUPERBOTA – Zdravá dětská obuv",
               street: "Miřiovského 1303",
               zip: "377 01",
               city: "Jindřichův Hradec",
-              mapUrl: "https://mapy.cz/s/1oC4w",
+              mapUrl:
+                "https://mapy.com/cs/letecka?q=Mi%C5%99iovsk%C3%A9ho%201303%2C%20377%2001%20Jind%C5%99ich%C5%AFv%20Hradec%201&source=addr&id=11467047&ds=2&x=15.0049961&y=49.1498224&z=17",
             },
           ],
         },
