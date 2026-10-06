@@ -1,6 +1,46 @@
 /* Tento soubor automaticky generuje nastroj blog_mgr (ciciban/blog_ciciban.py publish). Neupravuj rucne. */
 window.CLANKY = [
   {
+    title: "Barefoot nebo klasické dětské boty? Co dětem prospívá",
+    datum: "6. 10. 2026",
+    iso: "2026-10-06",
+    slug: "barefoot-nebo-klasicke-detske-boty",
+    excerpt: "Dětská noha roste doslova pod rukama. Než dítě nastoupí do školy, změní se její tvar i velikost několikrát. Boty, které chodidlu nedovolí volně se hýbat, tomu...",
+    obrazek: "obrazky/barefoot-nebo-klasicke-detske-boty-hero.png",
+  },
+  {
+    title: "Dětské boty s membránou – kdy ano a kdy ne?",
+    datum: "6. 10. 2026",
+    iso: "2026-10-06",
+    slug: "detske-boty-s-membranou-kdy-ano-a-kdy-ne",
+    excerpt: "Membrána v dětských botách je skvělá věc. Udrží nohy v suchu, když se venku z mokra stane zima. Není to ale řešení na celý rok. Záleží na počasí, na tom, co...",
+    obrazek: "obrazky/detske-boty-s-membranou-kdy-ano-a-kdy-ne-hero.png",
+  },
+  {
+    title: "Jak poznat, že dítěti boty nesedí? Poradíme rodičům",
+    datum: "6. 10. 2026",
+    iso: "2026-10-06",
+    slug: "jak-poznat-ze-diteti-boty-nesedi",
+    excerpt: "Dětské nohy rostou rychle a špatně zvolená obuv může nadělat problémy. Jak ale poznat, že boty opravdu nesedí? Nejde jen o velikost. Sledujte, jak dítě chodí...",
+    obrazek: "obrazky/jak-poznat-ze-diteti-boty-nesedi-hero.png",
+  },
+  {
+    title: "Jaké ponožky vybrat do dětských bot?",
+    datum: "6. 10. 2026",
+    iso: "2026-10-06",
+    slug: "jake-ponozky-vybrat-do-detskych-bot",
+    excerpt: "Ponožky jsou pro dětské nohy stejně důležité jako boty samotné. Drží chodidlo na místě, odvádějí pot a chrání kůži před otlaky. Špatně vybraný pár dokáže...",
+    obrazek: "obrazky/jake-ponozky-vybrat-do-detskych-bot-hero.png",
+  },
+  {
+    title: "Mohou děti nosit boty po starším sourozenci?",
+    datum: "6. 10. 2026",
+    iso: "2026-10-06",
+    slug: "mohou-deti-nosit-boty-po-starsim-sourozenci",
+    excerpt: "Šatník po starším sourozenci je pro rodinný rozpočet požehnáním. U oblečení není co řešit. U bot ale platí jiná pravidla. Nohy dětí se vyvíjejí a obnošená bota...",
+    obrazek: "obrazky/mohou-deti-nosit-boty-po-starsim-sourozenci-hero.png",
+  },
+  {
     title: "Papuče Ciciban: proč je děti milují a rodiče kupují znovu",
     datum: "12. 9. 2026",
     iso: "2026-09-12",
