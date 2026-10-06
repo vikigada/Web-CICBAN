@@ -110,16 +110,20 @@ ul {
 /* ---------- Kontaktní lišta ---------- */
 .header-main {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  gap: 20px;
+  justify-content: center;
+  gap: 16px;
   padding: 20px 0;
 }
 
 .header-contact {
   display: flex;
-  flex-direction: column;
-  gap: 12px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
   min-width: 0;
 }
 
@@ -794,24 +798,14 @@ a.btn-readmore:hover {
 /* ---------- Responzivita ---------- */
 @media (max-width: 992px) {
   .header-main {
-    flex-wrap: wrap;
-    justify-content: center;
+    gap: 12px;
   }
 
   .header-contact {
-    order: 2;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 100%;
-  }
-
-  .header-contact--right {
-    width: auto;
+    gap: 16px;
   }
 
   .logo-space {
-    order: 1;
     width: 100%;
   }
 
