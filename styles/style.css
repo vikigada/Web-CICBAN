@@ -614,9 +614,7 @@ a.btn-readmore:hover {
 /* Šipka zpět vpravo nahoře */
 .blog-back {
   position: absolute;
-  top: 40px;
-  right: 15px;
-  display: inline-flex;
+  top: 10px;
   align-items: center;
   gap: 8px;
   font-size: 0.9em;
